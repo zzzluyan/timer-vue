@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		{{zerofill.strmin}}:{{zerofill.strsec}}:{{zerofill.strmillisec}}
+		<div>
+			<input type="button" v-bind:value="btnName ? 'start' : 'pause'" v-on:click="start">
+			<input type="button" value="reset" v-on:click="reset" v-if="btnName">
+		</div>
+		
+	</div>
+
+
+
+	<script src="../js/index.js"></script>
+</body>
+</html>
