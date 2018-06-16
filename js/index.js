@@ -4,12 +4,11 @@ let vm = new Vue({
 		minute: 0,
 		second: 0,
 		millisecond: 0,
-		btnName: true
+		btnName: true,
+		startTimer:null
 	},
 	methods: {
 		timer (){
-			if(this.btnName) return;
-
 			this.millisecond ++;
 			if(this.millisecond == 99){
 				this.second ++;
@@ -19,10 +18,15 @@ let vm = new Vue({
 				this.minute ++;
 				this.second = 0;
 			}
+			console.log(1);
 		},
 		start(){
+			if(this.btnName){
+				this.startTimer = setInterval('vm.timer()',10);
+			}else{
+				clearInterval(this.startTimer);
+			}
 			this.btnName = !this.btnName;
-			let startTimer = setInterval('vm.timer()',10);
 		},
 		reset() {
 			this.minute = this.second = this.millisecond = 0;
@@ -35,5 +39,5 @@ let vm = new Vue({
 			let strmillisec = ('0' + this.millisecond).slice(-2);
 			return { strmin, strsec, strmillisec }
 		}
-	}
+	},
 });
